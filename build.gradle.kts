@@ -23,7 +23,7 @@ dependencies {
     implementation("org.ow2.asm:asm-commons:9.9.1")
     implementation("org.ow2.asm:asm-tree:9.9.1")
     implementation("org.ow2.asm:asm-util:9.9.1")
-    implementation("org.spongepowered:mixin:0.8.7")
+    implementation("net.fabricmc:sponge-mixin:0.17.0+mixin.0.8.7")
     implementation(files("libs/HytaleServer.jar"))
 }
 

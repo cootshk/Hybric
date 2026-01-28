@@ -6,8 +6,6 @@ Load Hytale via the Fabric Mod Loader.
 
 Place `HytaleServer.jar` into the `libs/` folder.
 
-Note: You may have to do something about `mixinextras` failing to load (shadowing it with a dummy mod worked for me).
-
 ## Running
 
 Just run the Fabric run configuration from inside IntelliJ.

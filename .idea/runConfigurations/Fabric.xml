@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="true" type="Application" factoryName="Application">
+  <configuration default="false" name="Fabric" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="21" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="MAIN_CLASS_NAME" value="net.fabricmc.loader.impl.launch.knot.KnotServer" />
-    <module name="hybric" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <module name="hybric.main" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/libs" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
