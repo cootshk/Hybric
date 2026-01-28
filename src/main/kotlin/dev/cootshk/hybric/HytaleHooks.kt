@@ -26,7 +26,7 @@ object HytaleHooks {
         EntrypointUtils.invoke(
             "main",
             ModInitializer::class.java,
-            Consumer { obj: ModInitializer? -> obj!!.onInitialize() })
+            Consumer { obj: ModInitializer -> obj.onInitialize() })
         if (FabricLoaderImpl.INSTANCE.environmentType == EnvType.CLIENT) {
             EntrypointUtils.invoke(
                 "client",
