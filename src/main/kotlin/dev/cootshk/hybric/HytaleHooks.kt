@@ -1,6 +1,6 @@
-package dev.cootshk.hytalefabric
+package dev.cootshk.hybric
 
-import dev.cootshk.hytalefabric.fabric.EntrypointUtils
+import dev.cootshk.hybric.fabric.EntrypointUtils
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.DedicatedServerModInitializer
 import net.fabricmc.api.EnvType
@@ -31,12 +31,12 @@ object HytaleHooks {
             EntrypointUtils.invoke(
                 "client",
                 ClientModInitializer::class.java,
-                Consumer { obj: ClientModInitializer? -> obj!!.onInitializeClient() })
+                Consumer { obj: ClientModInitializer -> obj.onInitializeClient() })
         } else {
             EntrypointUtils.invoke(
                 "server",
                 DedicatedServerModInitializer::class.java,
-                Consumer { obj: DedicatedServerModInitializer? -> obj!!.onInitializeServer() })
+                Consumer { obj: DedicatedServerModInitializer -> obj.onInitializeServer() })
         }
     }
 }

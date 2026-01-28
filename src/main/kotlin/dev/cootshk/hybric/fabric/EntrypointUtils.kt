@@ -1,4 +1,4 @@
-package dev.cootshk.hytalefabric.fabric
+package dev.cootshk.hybric.fabric
 
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer
 import net.fabricmc.loader.impl.FabricLoaderImpl

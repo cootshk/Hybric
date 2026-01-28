@@ -1,4 +1,4 @@
-package dev.cootshk.hytalefabric;
+package dev.cootshk.hybric;
 
 import net.fabricmc.loader.impl.game.patch.GamePatch;
 import net.fabricmc.loader.impl.launch.FabricLauncher;
@@ -21,14 +21,6 @@ public class HytaleEntrypointPatch extends GamePatch {
     public void process(@NotNull FabricLauncher launcher, Function<String, ClassNode> classSource, Consumer<ClassNode> classEmitter) {
         // Get the game's entrypoint (set in the GameProvider) from FabricLauncher
         String entrypoint = launcher.getEntrypoint();
-
-        /* Check to see if we got only the entrypoint we want, as you can have multiple entrypoints set.
-         * (Usually for client/server differences and the like, but I like to see this as being abusable
-         * and allowing one provider to load multiple games.)
-         */
-        if (!entrypoint.startsWith("com.hypixel.")) {
-            return;
-        }
 
         // Store the entrypoint class as a ClassNode variable so that we can more easily work with it.
         ClassNode mainClass = classSource.apply(entrypoint);

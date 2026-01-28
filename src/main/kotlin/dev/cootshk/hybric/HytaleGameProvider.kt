@@ -1,4 +1,4 @@
-package dev.cootshk.hytalefabric
+package dev.cootshk.hybric
 
 import com.hypixel.hytale.common.util.java.ManifestUtil
 import com.hypixel.hytale.logger.backend.HytaleLogManager
@@ -27,10 +27,9 @@ class HytaleGameProvider : GameProvider {
     }
 
     private lateinit var gameJar: Path
-    private var jarFiles: MutableSet<String> = mutableSetOf()
     private lateinit var arguments: Arguments
     private lateinit var gameDirectory: Path
-    private val gameTransformer: GameTransformer = HytaleGameTransformer
+    private val gameTransformer: GameTransformer = GameTransformer(HytaleEntrypointPatch())
     private var entrypoint: String = "com.hypixel.hytale.Main"
     private var development: Boolean = false
 
@@ -107,9 +106,8 @@ class HytaleGameProvider : GameProvider {
             e.printStackTrace()
         }
 
-//        if (!arguments.containsKey("gameDir")) {
-//            arguments.put("gameDir", getLaunchDirectory(arguments).toAbsolutePath().normalize().toString());
-//        }
+        // TODO: do something about the assets folder/assets.zip file
+        // (For now it just uses the assets/ folder)
         if (!arguments.containsKey("assets")) {
             arguments.put("assets", "assets")
         }
@@ -156,31 +154,6 @@ class HytaleGameProvider : GameProvider {
 
     override fun getLaunchArguments(sanitize: Boolean): Array<String> {
         return this.arguments.toArray()
-    }
-    private fun isHostApp(path: Path): Boolean {
-        if (Files.isDirectory(path)) {
-            for (string in this.jarFiles) {
-                if (Files.exists(path.resolve(string))) {
-                    return true
-                }
-            }
-
-            return false
-        }
-
-        try {
-            ZipFile(path.toFile()).use { zip ->
-                for (string in this.jarFiles) {
-                    if (zip.getEntry(string) != null) {
-                        return true
-                    }
-                }
-            }
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-        }
-
-        return false
     }
     private val TRANSFORM_WIDENALL_STRIPENV_CLASSTWEAKS: MutableSet<GameProvider.BuiltinTransform> = EnumSet.of(
         GameProvider.BuiltinTransform.WIDEN_ALL_PACKAGE_ACCESS,
