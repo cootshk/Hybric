@@ -1,0 +1,1 @@
+Get the `HytaleServer.jar` file and place it here.
