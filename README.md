@@ -60,3 +60,11 @@ Mods and plugins are loaded from the same folder, which means a .jar file can co
 ## Support
 
 Join my [Discord](https://discord.gg/8hbRnkhNEa)!
+
+## Legal
+
+Hybric is licensed under the GPLv3.
+
+The example mod is licensed under the CC0, which means it is free to use for any purpose, with or without credit.
+
+Hytale &copy; 2026 Hypixel Studios.

@@ -4,6 +4,7 @@
   "environment": "server",
   "version": "1.0.0",
   "authors": ["Cootshk"],
+  "license": ["CC0-1.0"],
   "depends": {
     "hytale": "*"
   },
