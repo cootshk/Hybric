@@ -1,0 +1,8 @@
+{
+  "package": "dev.cootshk.hybric.mixin",
+  "mixins": [
+    "MixinPluginManager"
+  ],
+  "mixinPriority": 999,
+  "minVersion": "0.8.7"
+}

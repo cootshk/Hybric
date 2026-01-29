@@ -12,7 +12,6 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
     implementation("net.fabricmc:fabric-loader:0.18.4")
     implementation("net.fabricmc:access-widener:2.1.0")
     implementation("net.fabricmc:tiny-mappings-parser:0.2.2.14")
@@ -24,6 +23,7 @@ dependencies {
     implementation("org.ow2.asm:asm-tree:9.9.1")
     implementation("org.ow2.asm:asm-util:9.9.1")
     implementation("net.fabricmc:sponge-mixin:0.17.0+mixin.0.8.7")
+    implementation("io.github.llamalad7:mixinextras-fabric:0.5.3")
     implementation(files("libs/HytaleServer.jar"))
 }
 

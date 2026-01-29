@@ -1,8 +1,10 @@
 package dev.cootshk.hybric
 
+import com.hypixel.hytale.Main as Hytale
 import com.hypixel.hytale.common.util.java.ManifestUtil
 import com.hypixel.hytale.logger.backend.HytaleLogManager
 import net.fabricmc.api.EnvType
+import net.fabricmc.loader.api.FabricLoader
 import net.fabricmc.loader.api.metadata.ModEnvironment
 import net.fabricmc.loader.impl.FabricLoaderImpl
 import net.fabricmc.loader.impl.game.GameProvider
@@ -16,14 +18,17 @@ import java.net.URISyntaxException
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
-import java.util.*
+import java.util.EnumSet
 import java.util.zip.ZipFile
+import kotlin.io.path.toPath
+import kotlin.reflect.KClass
 
 
 // https://wiki.fabricmc.net/documentation:fabric_loader
 class HytaleGameProvider : GameProvider {
     init {
-        System.setProperty("java.util.logging.manager", HytaleLogManager::class.java.getName())
+        // Load HytaleLogManager first.
+        System.setProperty("java.util.logging.manager", HytaleLogManager::class.java.name)
     }
 
     private lateinit var gameJar: Path
@@ -77,7 +82,7 @@ class HytaleGameProvider : GameProvider {
         this.arguments.parse(args)
 
 
-        val zipFiles: MutableMap<Path?, ZipFile?> = HashMap<Path?, ZipFile?>()
+        val zipFiles: MutableMap<Path, ZipFile> = HashMap()
 
         if (System.getProperty(SystemProperties.DEVELOPMENT) == "true") {
             development = true
@@ -111,6 +116,9 @@ class HytaleGameProvider : GameProvider {
         if (!arguments.containsKey("assets")) {
             arguments.put("assets", "assets")
         }
+        if (!arguments.containsKey("disable-sentry") || arguments.extraArgs.contains("--disable-sentry")) {
+            arguments.addExtraArg("--disable-sentry")
+        }
 
         return true
 
@@ -121,10 +129,10 @@ class HytaleGameProvider : GameProvider {
         try {
             launcher.setValidParentClassPath(
                 mutableListOf(
-                    Path.of(
-                        this.javaClass.protectionDomain.codeSource.location.toURI()
-                    )
-                )
+                    this::class,
+                    FabricLoader::class,
+                    Hytale::class
+                ).map { Path.of(it.java.protectionDomain.codeSource.location.toURI()) }
             )
         } catch (e: URISyntaxException) {
             throw java.lang.RuntimeException(e)
