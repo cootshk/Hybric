@@ -1,15 +1,15 @@
 package dev.cootshk.hybric
 
-import com.hypixel.hytale.logger.HytaleLogger
 import dev.cootshk.hybric.fabric.EntrypointUtils
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.DedicatedServerModInitializer
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.loader.impl.FabricLoaderImpl
+import net.fabricmc.loader.impl.util.log.Log
+import net.fabricmc.loader.impl.util.log.LogCategory
 import org.spongepowered.asm.launch.MixinBootstrap
 import org.spongepowered.asm.mixin.Mixins
-import java.io.File
 import java.nio.file.Paths
 import java.util.function.Consumer
 
@@ -22,7 +22,6 @@ object HytaleHooks {
     val INTERNAL_NAME: String = HytaleHooks::class.java.getName().replace('.', '/')
 
     private val runDir = Paths.get(".")
-    private val logger = HytaleLogger.get("Hybric")
 
     /** This hook runs Fabric's ModInitializer.onInitialize() from where it is called.
      * It's recommended that you call them from as late into the game's execution as you can while still being before the game loop,
@@ -31,7 +30,7 @@ object HytaleHooks {
     @JvmStatic
     @Suppress("unused")
     fun initMain() {
-        logger.atInfo().log("Loading Main Entrypoint!")
+        Log.info(LogCategory.ENTRYPOINT, "Loading Main Entrypoint!")
         FabricLoaderImpl.INSTANCE.prepareModInit(runDir, FabricLoaderImpl.INSTANCE.gameInstance)
         EntrypointUtils.invoke(
             "main",
@@ -43,13 +42,13 @@ object HytaleHooks {
     @Suppress("unused")
     fun initClientServer() {
         if (FabricLoaderImpl.INSTANCE.environmentType == EnvType.CLIENT) {
-            logger.atInfo().log("Loading Client Entrypoint!")
+            Log.info(LogCategory.ENTRYPOINT, "Loading Client Entrypoint!")
             EntrypointUtils.invoke(
                 "client",
                 ClientModInitializer::class.java,
                 Consumer { obj: ClientModInitializer -> obj.onInitializeClient() })
         } else {
-            logger.atInfo().log("Loading Server Entrypoint!")
+            Log.info(LogCategory.ENTRYPOINT, "Loading Server Entrypoint!")
             EntrypointUtils.invoke(
                 "server",
                 DedicatedServerModInitializer::class.java,

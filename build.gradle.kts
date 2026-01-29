@@ -1,11 +1,13 @@
 plugins {
     kotlin("jvm") version "2.3.0"
+    id("com.gradleup.shadow") version "9.3.1"
 }
 
 group = "dev.cootshk"
-version = "0.0.1"
+version = "0.1.0"
 
 repositories {
+    gradlePluginPortal()
     mavenCentral()
     maven("https://repo.spongepowered.org/maven/")
     maven("https://maven.fabricmc.net/")
@@ -24,7 +26,7 @@ dependencies {
     implementation("org.ow2.asm:asm-util:9.9.1")
     implementation("net.fabricmc:sponge-mixin:0.17.0+mixin.0.8.7")
     implementation("io.github.llamalad7:mixinextras-fabric:0.5.3")
-    implementation(files("libs/HytaleServer.jar"))
+    compileOnly(files("libs/HytaleServer.jar"))
 }
 
 val javaCompatibility = 21
@@ -36,5 +38,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(javaCompatibility))
+    }
+}
+
+tasks.shadowJar {
+    manifest {
+        attributes(mapOf(
+            "Class-Path" to "HytaleServer.jar",
+            "Main-Class" to "net.fabricmc.loader.impl.launch.knot.KnotServer"
+        ))
     }
 }

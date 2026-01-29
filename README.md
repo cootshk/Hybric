@@ -2,12 +2,30 @@
 
 Load Hytale via the Fabric Mod Loader.
 
+## Features
+
+- [x] Fabric Mods
+- [x] Doesn't interfere with existing plugins
+- [x] Mixins
+- [x] Lightweight
+
 ## Compiling
 
 Place `HytaleServer.jar` into the `libs/` folder.
 
+Then, run `./gradlew shadowJar`.
+
+To build the example mod, run `./gradlew :mod:build`.
+
 ## Running
 
+### Server:
+First, extract Hytale's Assets.zip file into the `assets/` folder. 
+
+Then, place the Hybric .jar file from [releases](https://github.com/cootshk/Hybric/releases) into the same folder as the `HytaleServer.jar` file.
+Lastly, simply run Hybric with `java -jar`.
+
+### Development:
 Just run the Fabric run configuration from inside IntelliJ.
 If IJ is having issues finding it, you can use the following settings:
 - Java version: 21

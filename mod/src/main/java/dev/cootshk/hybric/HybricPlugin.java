@@ -1,22 +1,24 @@
 package dev.cootshk.hybric;
 
+import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 
 import javax.annotation.Nonnull;
 
 public class HybricPlugin extends JavaPlugin {
+    private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
     static {
-        System.out.println("[Hybric] Plugin Loaded");
+        LOGGER.atInfo().log("[Hybric] Plugin Loaded");
     }
     public HybricPlugin(@Nonnull JavaPluginInit init) {
         super(init);
-        System.out.println("[Hybric] Initialized...");
+        LOGGER.atInfo().log("[Hybric] Initialized...");
     }
 
     @Override
     protected void start() {
-        System.out.println("[Hybric] Starting plugin...");
+        LOGGER.atInfo().log("[Hybric] Starting plugin...");
         Hybric.helloFromFabric();
     }
 }

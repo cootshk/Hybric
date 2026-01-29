@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "hybric",
+  "id": "hybric-example-mod",
   "environment": "server",
   "version": "1.0.0",
   "authors": ["Cootshk"],

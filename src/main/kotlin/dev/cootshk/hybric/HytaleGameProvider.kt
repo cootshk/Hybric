@@ -20,8 +20,6 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.EnumSet
 import java.util.zip.ZipFile
-import kotlin.io.path.toPath
-import kotlin.reflect.KClass
 
 
 // https://wiki.fabricmc.net/documentation:fabric_loader
@@ -35,15 +33,15 @@ class HytaleGameProvider : GameProvider {
     private lateinit var arguments: Arguments
     private lateinit var gameDirectory: Path
     private val gameTransformer: GameTransformer = GameTransformer(HytaleEntrypointPatch())
-    private var entrypoint: String = "com.hypixel.hytale.Main"
+    private var entrypoint: String = Hytale::class.java.name
     private var development: Boolean = false
 
     private lateinit var envType: EnvType
 
     override fun getGameId(): String = "hytale"
     override fun getGameName(): String = "Hytale"
-    override fun getRawGameVersion(): String = ManifestUtil.getImplementationVersion()?.slice(0..9) ?: "Unknown"
-    override fun getNormalizedGameVersion(): String = ManifestUtil.getImplementationVersion() ?: "Unknown"
+    override fun getRawGameVersion(): String = ManifestUtil.getImplementationVersion() ?: "Unknown"
+    override fun getNormalizedGameVersion(): String = ManifestUtil.getImplementationVersion()?.slice(0..9) ?: "Unknown"
     override fun getBuiltinMods(): Collection<GameProvider.BuiltinMod> {
         // TODO: return built in plugins
         val metadata = BuiltinModMetadata.Builder(gameId, rawGameVersion)
@@ -131,8 +129,7 @@ class HytaleGameProvider : GameProvider {
                 mutableListOf(
                     this::class,
                     FabricLoader::class,
-                    Hytale::class
-                ).map { Path.of(it.java.protectionDomain.codeSource.location.toURI()) }
+                ).map { Path.of(it.java.protectionDomain.codeSource.location.toURI()).let { path -> println(path); path } }
             )
         } catch (e: URISyntaxException) {
             throw java.lang.RuntimeException(e)

@@ -1,7 +1,6 @@
 package dev.cootshk.hybric;
 
 import com.hypixel.hytale.LateMain;
-import com.hypixel.hytale.Main;
 import com.hypixel.hytale.server.core.HytaleServer;
 import net.fabricmc.loader.impl.game.patch.GamePatch;
 import net.fabricmc.loader.impl.launch.FabricLauncher;
@@ -13,7 +12,6 @@ import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
-import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 
 import java.util.ListIterator;
 import java.util.function.Consumer;

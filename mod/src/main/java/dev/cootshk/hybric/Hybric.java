@@ -1,24 +1,26 @@
 package dev.cootshk.hybric;
 
+import com.hypixel.hytale.logger.HytaleLogger;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 
 
 public class Hybric implements PreLaunchEntrypoint, ModInitializer, DedicatedServerModInitializer {
+    private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
     @Override
     public void onPreLaunch() {
-        System.out.println("[Hybric] Initializing PreLaunch...");
+        LOGGER.atInfo().log("Hello, PreLaunch!");
     }
     @Override
     public void onInitialize() {
-        System.out.println("[Hybric] Initializing Main...");
+        LOGGER.atInfo().log("Hello, Main!");
     }
     @Override
     public void onInitializeServer() {
-        System.out.println("[Hybric] Initializing Server...");
+        LOGGER.atInfo().log("Hello, World!");
     }
     public static void helloFromFabric() {
-        System.out.println("[Hybric] Hello from Fabric!");
+        LOGGER.atInfo().log("Hello, from Fabric!");
     }
 }
