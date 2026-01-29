@@ -28,3 +28,16 @@ If you want to load code later, check out Hytale's built in plugin system.
 ### Plugin Interop
 
 Mods and plugins are loaded from the same folder, which means a .jar file can contain both a mod and a plugin, and the mod and plugin can share classes/data.
+
+## TODO
+
+- [x] Automatically disable Sentry
+- [ ] Allow launching from a different game dir/jar
+- [ ] MixinExtras
+- [ ] Expose Fabric Loader to Plugins
+- [ ] Fabric Plugin for mods to depend on
+- [ ] Bundle Fabric Language Kotlin?
+
+## Support
+
+Join my [Discord](https://discord.gg/8hbRnkhNEa)!
