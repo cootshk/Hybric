@@ -5,6 +5,7 @@ Load Hytale via the Fabric Mod Loader.
 ## Features
 
 - [x] Fabric Mods
+- [x] `preLaunch`, `main`, and `server` entrypoints
 - [x] Doesn't interfere with existing plugins
 - [x] Mixins
 - [x] Lightweight
@@ -20,10 +21,10 @@ To build the example mod, run `./gradlew :mod:build`.
 ## Running
 
 ### Server:
-First, extract Hytale's Assets.zip file into the `assets/` folder. 
+Make a new folder for your `HytaleServer.jar` file. Inside that folder, make another folder called `assets` and extract Hytale's `Assets.zip` there. (Make sure it isn't `assets/Assets`!)
 
 Then, place the Hybric .jar file from [releases](https://github.com/cootshk/Hybric/releases) into the same folder as the `HytaleServer.jar` file.
-Lastly, simply run Hybric with `java -jar`.
+Lastly, simply run Hybric with `java -jar Hybric-0.1.0.jar`.
 
 ### Development:
 Just run the Fabric run configuration from inside IntelliJ.
@@ -39,7 +40,7 @@ The server root is the `libs/` folder, you can place both Fabric mods and Hytale
 
 An example mod can be found in the `mod` folder.
 
-The `main` and `server` entrypoints are run immediately before starting `com.hypixel.hytale.Main`, essentially loading them before everything else.
+The `main` entrypoint is run after Hytale's `LateMain.lateMain()`, and `server` is run at the end of `HytaleServer.boot()`.
 
 If you want to load code later, check out Hytale's built in plugin system.
 
@@ -53,7 +54,7 @@ Mods and plugins are loaded from the same folder, which means a .jar file can co
 - [ ] Allow launching from a different game dir/jar
 - [ ] MixinExtras
 - [ ] Expose Fabric Loader to Plugins
-- [ ] Fabric Plugin for mods to depend on
+- [ ] Fabric Plugin for other plugins to depend on
 - [ ] Bundle Fabric Language Kotlin?
 
 ## Support
