@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "hybric",
+  "environment": "server",
+  "version": "1.0.0",
+  "authors": ["Cootshk"],
+  "depends": {
+    "hytale": "*"
+  },
+  "entrypoints": {
+    "preLaunch": [
+      "dev.cootshk.hybric.Hybric"
+    ],
+    "main": [
+      "dev.cootshk.hybric.Hybric"
+    ],
+    "server": [
+      "dev.cootshk.hybric.Hybric"
+    ]
+  },
+  "mixins": [
+    "hybric.mixins.json"
+  ]
+}

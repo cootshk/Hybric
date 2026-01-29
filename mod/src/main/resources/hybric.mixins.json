@@ -1,0 +1,6 @@
+{
+  "package": "dev.cootshk.hybric.mixin",
+  "mixins": [
+    "MixinLateMain"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "Group": "dev.cootshk.hybric",
+  "Name": "HybricPlugin",
+  "Version": "1.0.0",
+  "Description": "Hybric Example Plugin",
+  "Main": "dev.cootshk.hybric.HybricPlugin"
+}
