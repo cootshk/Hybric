@@ -9,16 +9,16 @@ import javax.annotation.Nonnull;
 public class HybricPlugin extends JavaPlugin {
     private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
     static {
-        LOGGER.atInfo().log("[Hybric] Plugin Loaded");
+        LOGGER.atInfo().log("Plugin Loaded");
     }
     public HybricPlugin(@Nonnull JavaPluginInit init) {
         super(init);
-        LOGGER.atInfo().log("[Hybric] Initialized...");
+        LOGGER.atInfo().log("Initialized...");
     }
 
     @Override
     protected void start() {
-        LOGGER.atInfo().log("[Hybric] Starting plugin...");
+        LOGGER.atInfo().log("Starting plugin...");
         Hybric.helloFromFabric();
     }
 }
